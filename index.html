@@ -223,6 +223,46 @@
     .realRouteMap{position:relative;height:190px;border:1px solid #eadfd8;border-radius:14px;overflow:hidden;background:#fff}.realRouteMap .leaflet-tile-pane{filter:grayscale(.72) saturate(.55) brightness(1.08) contrast(.88)}.realRouteMap .leaflet-control-zoom{border:0;box-shadow:0 4px 14px rgba(66,50,43,.12)}.realRouteMap .leaflet-control-zoom a{width:27px;height:27px;line-height:27px;border:0;color:var(--red);background:#fff;font-weight:800}.realRouteMap .leaflet-control-zoom a:first-child{border-bottom:1px solid #f0e5df}.realRouteMap .leaflet-control-attribution{padding:1px 4px;background:rgba(255,255,255,.82);font-size:7px}.routePinIcon,.mapTimeIcon{border:0;background:transparent}.cuteMapPin{position:absolute;left:0;top:0;width:25px;height:25px;border:3px solid #fff;border-radius:50% 50% 50% 0;background:var(--red);box-shadow:0 3px 8px rgba(226,58,89,.28);transform:rotate(-45deg)}.cuteMapPin:after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;border-radius:50%;background:#fff;transform:translate(-50%,-50%)}.mapPinLabel{position:absolute;left:13px;top:30px;transform:translateX(-50%);width:max-content;max-width:104px;padding:2px 6px;border:1px solid #f0dcd8;border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 2px 7px rgba(76,57,48,.08);color:#3e3531;font-size:8.5px;font-weight:800;line-height:1.15;text-align:center;white-space:normal}.mapTimeTag{display:block;width:max-content;max-width:104px;padding:3px 7px;border:1px solid #ffd3db;border-radius:999px;background:rgba(255,255,255,.96);box-shadow:0 2px 8px rgba(225,71,98,.12);color:#d94b64;font-size:8px;font-weight:900;line-height:1.1;text-align:center;white-space:normal}.realRouteMap .leaflet-popup-content-wrapper{border-radius:12px;box-shadow:0 7px 24px rgba(67,48,40,.14)}.realRouteMap .leaflet-popup-content{margin:10px 12px}.mapPopup{display:grid;gap:6px;min-width:120px}.mapPopup b{font-size:10px}.mapPopup a{display:block;padding:5px 8px;border-radius:999px;background:var(--red-soft);color:var(--red);text-align:center;text-decoration:none;font-size:9px;font-weight:800}.mapFallback{height:100%;display:flex;align-items:center;padding:0 14px;background:linear-gradient(135deg,#fffdfa,#f8fbfd)}.mapFooter{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;min-width:0}.mapHint{min-width:0;overflow:hidden;color:#8a7f79;font-size:8.8px;text-overflow:ellipsis;white-space:nowrap}.mapActions{display:flex;gap:5px;flex:0 0 auto}.mapLink{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid #eadfd8;border-radius:999px;background:#fff;color:#554b46;text-decoration:none;font-size:9px;font-weight:800}.mapLink.primary{border-color:#ffcad4;background:var(--red-soft);color:var(--red)}.mapLink:hover{transform:translateY(-1px)}
     @media(max-width:620px){.routeFlow{padding:10px 0 7px}.routeStop{flex:0 0 auto}.routeSegment{flex:0 0 100px;min-width:100px}.routeSegment>em{max-width:112px}}
     @media(max-width:620px){.realRouteMap{height:210px}.mapFooter{align-items:flex-start;flex-direction:column}.mapActions{width:100%}.mapLink{flex:1;justify-content:center}.mapHint{line-height:1.4;white-space:normal}}
+
+    /* Independent columns: content moves upward while both bottoms stay aligned */
+    .routeContent{align-items:stretch}
+    .mainContent{display:flex;flex-direction:column;min-width:0}
+    .mainContent>.summaryCard,.mainContent>.routeOverview,.mainContent>.timelineBlock{grid-column:auto;grid-row:auto}
+    .mainContent>.timelineBlock{display:flex;flex:1;flex-direction:column;min-width:0}
+    .timelineBlock>.sectionTitle{flex:0 0 auto}
+    .timelineBlock>.timeline{display:flex;flex:1;flex-direction:column;gap:6px;margin-bottom:0}
+    .timelineBlock .timeRow{flex:1 1 auto;min-height:48px}
+    .routeExtras{display:flex;grid-column:auto;grid-row:auto;align-self:stretch;height:auto;flex-direction:column;gap:10px}
+    .routeExtras .photoModule{display:block}
+    .routeExtras .photoModule .quickGuide{flex:none;grid-auto-rows:auto}
+    .quickShot{min-height:0}
+    .routeExtras>.detailsGrid{order:4;display:grid;flex:1;grid-template-columns:1fr;grid-template-rows:auto auto minmax(0,1fr);gap:8px;margin:2px 0 0;min-width:0}
+    .routeExtras>.detailsGrid .infoBox{padding:11px}
+    .noteBox{display:flex;flex-direction:column}
+    .noteBox .noteList{flex:1;align-content:start}
+    .routeShell>.sourceNote{margin-top:12px}
+    @media(max-width:920px){
+      .mainContent,.routeExtras{height:auto}
+      .mainContent>.timelineBlock{display:block}
+      .timelineBlock>.timeline{display:grid;gap:8px;margin-bottom:14px}
+      .timelineBlock .timeRow{min-height:0}
+      .routeExtras>.detailsGrid{display:grid;flex:none;grid-template-rows:auto}
+      .noteBox{display:block}
+    }
+    @media(max-width:480px){
+      .hero{display:grid;height:auto;min-height:0;grid-template-columns:1fr;grid-template-rows:auto 108px}
+      .heroCopy{padding:16px}
+      .kicker{max-width:100%;white-space:normal}
+      .hero h1{margin:9px 0 6px;font-size:23px;line-height:1.14}
+      .hero .subtitle{font-size:11px;line-height:1.45}
+      .hero .metrics{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px}
+      .hero .metric{padding:7px 9px}
+      .hero .metric b{font-size:13px}
+      .hero .metric span{display:inline;font-size:9px}
+      .heroPhoto{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:auto;height:98px;min-height:0;margin:0 10px 10px;border-radius:14px}
+      .heroPhoto img{object-position:center 42%}
+      .coupleTag{font-size:9px}
+    }
   </style>
 </head>
 <body>
@@ -255,6 +295,7 @@
         <section class="mainContent" id="mainContent"></section>
         <aside class="routeExtras" id="routeExtras"></aside>
       </div>
+      <div class="sourceNote"><b>地图说明</b> 页面用真实坐标展示当天途经关系；高德与 Google 打开后会按各自地图数据重新计算道路，实际驾驶以实时导航为准。</div>
     </section>
 
     <section class="sharedRow">
@@ -547,17 +588,25 @@
       dayList.innerHTML=days.map((d,i)=>`<button class="dayBtn ${i===currentDay?"active":""}" data-day="${i}" aria-pressed="${i===currentDay}"><span class="dayDate">${d.date} · ${d.dow}</span><span class="dayRoute">${esc(d.route)}</span><span class="dayDrive">${d.total} ${d.drive!=="—"?"· "+d.drive:""}</span></button>`).join("");
     }
 
+    function buildDetails(d){
+      const stayParts=d.stay.split(" · ");
+      const hotel=stayParts[0];
+      const stayNote=stayParts.slice(1).join(" · ")||"—";
+      const stayLabel=stayNote.includes("到家")?"返程":"住宿海拔";
+      const stayKicker=hotel==="不住宿"?"返程安排":"今晚住这里";
+      const mealHtml=d.meals.split("\n").filter(Boolean).map((line,i)=>{const match=line.match(/^([\u4e00-\u9fa5A-Za-z /]{1,8})[：:]\s*(.*)$/),label=match?match[1]:(i===0?"提醒":"补充"),text=match?match[2]:line;return `<div class="mealRow"><span class="mealTag">${esc(label.replace("饭",""))}</span><span class="mealText">${esc(text)}</span></div>`}).join("");
+      const notesHtml=notesByDay[currentDay].map((note,i)=>`<div class="noteItem"><span>${i%2?"贴心":"注意"}</span><p>${esc(note)}</p></div>`).join("");
+      return `<div class="detailsGrid"><div class="infoBox mealCard"><h3>餐饮安排</h3><div class="mealList">${mealHtml}</div></div><div class="infoBox stayCard"><h3>住宿信息</h3><div class="staySummary"><span class="stayKicker">${stayKicker}</span><b class="stayName">${esc(hotel)}</b><div class="stayMeta"><span>${stayLabel} · ${esc(stayNote)}</span></div></div></div><div class="infoBox full noteBox"><h3>备注</h3><div class="noteList">${notesHtml}</div></div></div>`;
+    }
+
     function renderItinerary(d){
       const stayParts=d.stay.split(" · ");
       const hotel=stayParts[0];
       const stayNote=stayParts.slice(1).join(" · ")||"—";
       const stayLabel=stayNote.includes("到家")?"返程":"住宿海拔";
-      const mealHtml=d.meals.split("\n").filter(Boolean).map((line,i)=>{const match=line.match(/^([\u4e00-\u9fa5A-Za-z /]{1,8})[：:]\s*(.*)$/),label=match?match[1]:(i===0?"提醒":"补充"),text=match?match[2]:line;return `<div class="mealRow"><span class="mealTag">${esc(label.replace("饭",""))}</span><span class="mealText">${esc(text)}</span></div>`}).join("");
-      const stayKicker=hotel==="不住宿"?"返程安排":"今晚住这里";
       const flow=routeFlows[currentDay];
       const mapRoute=mapRoutes[currentDay];
       const flowHtml=flow.nodes.map((node,i)=>`<div class="routeStop"><span aria-hidden="true"></span><b>${esc(node)}</b></div>${i<flow.segments.length?`<div class="routeSegment"><em>${esc(flow.segments[i])}</em><i></i></div>`:""}`).join("");
-      const notesHtml=notesByDay[currentDay].map((note,i)=>`<div class="noteItem"><span>${i%2?"贴心":"注意"}</span><p>${esc(note)}</p></div>`).join("");
       const amapUrl=amapRouteUrl(mapRoute),googleUrl=googleRouteUrl(mapRoute);
       mainContent.innerHTML=`
         <section class="summaryCard">
@@ -565,9 +614,7 @@
           <div class="summaryGrid"><div class="summaryMetric"><b>${d.total}</b><span>当天里程</span></div><div class="summaryMetric"><b>${d.drive}</b><span>驾驶时间</span></div><div class="summaryMetric hotelMetric"><b>${esc(hotel)}</b><span>住宿酒店</span></div><div class="summaryMetric"><b>${esc(stayNote)}</b><span>${stayLabel}</span></div></div>
         </section>
         <section class="routeOverview"><div class="cardHead"><h3>当天路线图</h3><span>${d.total} · ${d.drive}</span></div><div class="realRouteMap" id="realRouteMap"><div class="mapFallback"><div class="routeFlow" role="img" aria-label="${esc(flow.nodes.join(' 到 '))}">${flowHtml}</div></div></div><div class="mapFooter"><span class="mapHint">${mapRoute.mode==="drive"?"页面内为真实地理位置概览；实时道路与路况请在导航平台确认。":"跨城段包含航班或高铁；红线展示行程关系，不代表全程驾车。"}</span><div class="mapActions"><a class="mapLink primary" href="${esc(amapUrl)}" target="_blank" rel="noreferrer">高德地图</a><a class="mapLink" href="${esc(googleUrl)}" target="_blank" rel="noreferrer">Google Maps</a></div></div></section>
-        <section class="timelineBlock"><h3 class="sectionTitle">时间轴</h3><div class="timeline">${d.timeline.map((x,i)=>`<div class="timeRow" style="--delay:${Math.min(i,9)*40}ms"><div class="time">${esc(x[0])}</div><div class="dotLine"></div><div class="event">${esc(x[1])}</div></div>`).join("")}</div></section>
-        <div class="detailsGrid"><div class="infoBox mealCard"><h3>餐饮安排</h3><div class="mealList">${mealHtml}</div></div><div class="infoBox stayCard"><h3>住宿信息</h3><div class="staySummary"><span class="stayKicker">${stayKicker}</span><b class="stayName">${esc(hotel)}</b><div class="stayMeta"><span>${stayLabel} · ${esc(stayNote)}</span></div></div></div><div class="infoBox full noteBox"><h3>备注</h3><div class="noteList">${notesHtml}</div></div></div>
-        <div class="sourceNote"><b>地图说明</b> 页面用真实坐标展示当天途经关系；高德与 Google 打开后会按各自地图数据重新计算道路，实际驾驶以实时导航为准。</div>`;
+        <section class="timelineBlock"><h3 class="sectionTitle">时间轴</h3><div class="timeline">${d.timeline.map((x,i)=>`<div class="timeRow" style="--delay:${Math.min(i,9)*40}ms"><div class="time">${esc(x[0])}</div><div class="dotLine"></div><div class="event">${esc(x[1])}</div></div>`).join("")}</div></section>`;
       renderRouteMap(mapRoute,flow);
     }
 
@@ -575,7 +622,8 @@
       routeExtras.innerHTML=`
         <section class="sideModule softModule"><div class="moduleHead"><h2>舒适优化</h2><span class="moduleBadge">少赶一点</span></div><p class="adviceText">${esc(d.soft)}</p></section>
         <section class="sideModule fastModule"><div class="moduleHead"><h2>热血可选</h2><span class="moduleBadge">体力好再选</span></div><p class="adviceText">${esc(d.fast)}</p></section>
-        <section class="sideModule photoModule"><div class="moduleHead"><h2>出片指南</h2><span class="moduleBadge">${d.date}</span></div><div class="quickGuide">${quickPhotos[currentDay].map(x=>`<div class="quickShot"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join("")}</div></section>`;
+        <section class="sideModule photoModule"><div class="moduleHead"><h2>出片指南</h2><span class="moduleBadge">${d.date}</span></div><div class="quickGuide">${quickPhotos[currentDay].map(x=>`<div class="quickShot"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join("")}</div></section>
+        ${buildDetails(d)}`;
     }
 
     function renderGlobals(){
