@@ -1103,9 +1103,9 @@ const packing = {
   "衣物与鞋履":["短袖T恤","长袖薄外套","卫衣 / 冲锋衣","长裤","短裤 / 裙子","内衣内裤","袜子","舒适运动鞋","凉鞋 / 拖鞋"],
   "防晒与保湿":["遮阳帽","魔术头巾 / 脖套","墨镜","防晒霜 SPF50+","润唇膏","保湿面霜 / 身体乳","补水面膜 14 片","护手霜"],
   "洗护与清洁":["洗面奶 / 洗漱用品","湿纸巾 / 消毒湿巾","纸巾","垃圾袋","密封胶袋","姨妈巾"],
-  "高原与药品":["氧气瓶（到西宁购买）","高原安","布洛芬 / 止痛药","肠胃药","创可贴","驱蚊液 / 花露水","安眠药（仅按医嘱）","+晕车药"],
-  "电子与拍摄":["手机 + 充电器","充电宝","相机 + 电池 + 内存卡","拍立得","耳机","数据线","+拍立得相纸"],
-  "行李与车内":["腰靠 / 颈枕","雨伞","行李箱","双肩包 / 背包","眼罩 / 耳塞","+离线地图"],
+  "高原与药品":["氧气瓶（到西宁购买）","高原安","布洛芬 / 止痛药","肠胃药","创可贴","驱蚊液 / 花露水","生理盐水鼻喷","安眠药（仅按医嘱）","+晕车药"],
+  "电子与拍摄":["手机 + 充电器","充电宝","相机 + 电池 + 内存卡","拍立得","镜头清洁布","耳机","数据线","+拍立得相纸"],
+  "行李与车内":["腰靠 / 颈枕","雨伞","行李箱","双肩包 / 背包","眼罩 / 耳塞","少量现金 + 银行卡","+离线地图"],
   "饮水与补给":["保温杯","矿泉水","红牛 / 功能饮料","葡萄糖","零食 / 干粮","水果","泡面 / 自热饭","口香糖"]
 };
 
@@ -1338,7 +1338,7 @@ const packing = {
       const packSaved=JSON.parse(localStorage.getItem("mj-packing-items-v2")||"[]");
       promiseContent.innerHTML=`<div class="moduleHead"><h2>💌 浪漫约定</h2></div><div class="promiseList">${promises.map(p=>`<div class="promiseRow"><span><b>${esc(p[0])}</b><span>${esc(p[1])}</span></span></div>`).join("")}</div>`;
       reminderContent.innerHTML=`<div class="moduleHead"><h2>重要提醒</h2><span class="moduleBadge">出发前逐项确认</span></div><div class="reminderGrid"><div class="reminderItem"><b>7/31 · 去程航班</b><span>19:15 北京大兴起飞；航班标注有调整，出发前复核动态，并在落地前点好外卖。</span></div><div class="reminderItem"><b>8/4 · 敦煌预约</b><span>莫高窟 13:30、鸣沙山 17:00；提前核对实名信息、身份证和入园时间。</span></div><div class="reminderItem"><b>8/7 · 省博预约</b><span>甘肃省博物馆需提前 1 天预约，按官方放票页面及时操作。</span></div><div class="reminderItem"><b>8/7 · 返程衔接</b><span>提前确认兰州西站至机场高铁与 19:20 航班，预留进站、安检和换乘时间。</span></div></div>`;
-      packingContent.innerHTML=`<div class="moduleHead"><h2>行前清单</h2><span class="moduleBadge">按附件整理 · 逐项勾选</span></div><div class="packingIntro"><b>清单已按你们的需要精简</b><span>共 56 项；姨妈巾与葡萄糖已加入，蓝色“补充”为仍保留的必要建议。</span></div><div class="packingGroups">${Object.entries(packing).map(([title,items])=>`<section class="packingGroup"><h3>${esc(title)}<span>${items.length} 项</span></h3><div class="packingItems">${items.map(raw=>{const added=raw.startsWith("+"),item=added?raw.slice(1):raw,id=encodeURIComponent(`${title}::${item}`);return `<label class="packItem ${added?"added":""} ${packSaved.includes(id)?"done":""}"><input type="checkbox" data-pack="${id}" ${packSaved.includes(id)?"checked":""}><span class="packName">${esc(item)}</span>${added?"<em>补充</em>":""}</label>`}).join("")}</div></section>`).join("")}</div>`;
+      packingContent.innerHTML=`<div class="moduleHead"><h2>行前清单</h2><span class="moduleBadge">按附件整理 · 逐项勾选</span></div><div class="packingIntro"><b>清单已按你们的需要精简</b><span>共 59 项；你们确认的补充物品均已加入，蓝色“补充”为仍保留的必要建议。</span></div><div class="packingGroups">${Object.entries(packing).map(([title,items])=>`<section class="packingGroup"><h3>${esc(title)}<span>${items.length} 项</span></h3><div class="packingItems">${items.map(raw=>{const added=raw.startsWith("+"),item=added?raw.slice(1):raw,id=encodeURIComponent(`${title}::${item}`);return `<label class="packItem ${added?"added":""} ${packSaved.includes(id)?"done":""}"><input type="checkbox" data-pack="${id}" ${packSaved.includes(id)?"checked":""}><span class="packName">${esc(item)}</span>${added?"<em>补充</em>":""}</label>`}).join("")}</div></section>`).join("")}</div>`;
     }
 
     function render(){renderDays();const d=days[currentDay];renderItinerary(d);renderSide(d);renderGlobals();}
